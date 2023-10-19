@@ -2,6 +2,7 @@
   <div class="about">
     <div class="title">
       <img src="../assets/img/title.png" alt="" />
+      <p>本人成分简介</p>
     </div>
 
     <div class="content">
@@ -25,29 +26,44 @@
             </div>
           </li>
           <li>
-            <div>
+            <!-- <div>
               <h2>个人技能</h2>
               <vue-seamless-scroll :data="listData" :class-option="optionSetting" class="seamless-warp">
                 <ul class="item">
                   <li v-for="item in listData" :key="item">{{ item.title }}</li>
                 </ul>
               </vue-seamless-scroll>
+            </div> -->
+            <div>
+              <h2>我的成分</h2>
+              <div class="biaoti">
+                <p class="title">成分：</p>
+                <p class="name">99%帅气+1%艺术气质</p>
+              </div>
+              <div class="biaoti">
+                <p class="title">优点：</p>
+                <p class="name">性格好易于相处，工作上进富有责任心，有很强的学习能力，对前端开发非常热爱能积极学习新技术并运用。</p>
+              </div>
+              <div class="biaoti">
+                <p class="title">爱好：</p>
+                <p class="name">画画、听歌、玩游戏</p>
+              </div>
             </div>
           </li>
           <li>
             <div>
-              <h2>关于我的</h2>
+              <h2>其他规格</h2>
               <div class="biaoti">
-                <p class="name"><b>我的爱好：</b>听歌、画画、玩游戏</p>
+                <p class="title">MBTI：</p>
+                <p class="name">intj建筑师人格</p>
               </div>
               <div class="biaoti">
-                <p class="name"><b>喜欢的奶茶：</b>各种茉莉茶底的奶茶，少冰全糖加珍珠！</p>
+                <p class="title">星座：</p>
+                <p class="name">天蝎座</p>
               </div>
               <div class="biaoti">
-                <p class="name"><b>喜欢的歌手：</b>玛丽莲曼森、Lady Gaga</p>
-              </div>
-              <div class="biaoti">
-                <p class="name"><b>喜欢的歌手：</b>玛丽莲曼森、Lady Gaga</p>
+                <p class="title">MBTI：</p>
+                <p class="name">intj建筑师人格</p>
               </div>
             </div>
           </li>
@@ -178,6 +194,15 @@ export default {
       left: 50%;
       right: 50%;
       transform: translate(-50%, -25%);
+    }
+    > p {
+      font-style: 120px;
+      font-family: '腾祥智黑简';
+      color: #ffffc3;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
     }
   }
   .content {

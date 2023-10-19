@@ -3,31 +3,32 @@
     <div class="picBox">
       <div>
         <ChartPie :width="'280px'" :height="'300px'"></ChartPie>
-        <button class="button button--block" @click="copyImportedFileContent(1)">复制代码</button>
+        <button class="button button--block" @click="copyImportedFileContent('ChartPie')">复制代码</button>
       </div>
       <div>
         <locaLoopChart :width="'280px'" :height="'300px'"></locaLoopChart>
-        <button class="button button--block" @click="copyImportedFileContent(1)">复制代码</button>
+        <button class="button button--block" @click="copyImportedFileContent('locaLoopChart')">复制代码</button>
       </div>
       <div class="fgx"></div>
       <div style="margin-top: -30px">
         <DeiFenHuan :width="'280px'" :height="'200px'"></DeiFenHuan>
-        <button class="button button--block" @click="copyImportedFileContent(1)">复制代码</button>
+        <button class="button button--block" @click="copyImportedFileContent('DeiFenHuan')">复制代码</button>
       </div>
       <div style="margin-top: -30px">
         <roseCharts :width="'300px'" :height="'300px'"></roseCharts>
-        <button class="button button--block" @click="copyImportedFileContent(1)">复制代码</button>
+        <button class="button button--block" @click="copyImportedFileContent('roseCharts')">复制代码</button>
       </div>
       <div class="fgx"></div>
       <div>
         <DoughnutChart :width="'300px'" :height="'300px'"></DoughnutChart>
-        <button style="margin-top: -50px" class="button button--block" @click="copyImportedFileContent(1)">复制代码</button>
+        <button style="margin-top: -50px" class="button button--block" @click="copyImportedFileContent('DoughnutChart')">复制代码</button>
       </div>
       <div></div>
     </div>
   </div>
 </template>
 <script>
+import axios from 'axios';
 import roseCharts from '../../components/Chart Library/03-饼图/03-玫瑰图/roseCharts.vue';
 import ChartPie from '../../components/Chart Library/03-饼图/01-基础饼图/ChartPie.vue';
 import locaLoopChart from '../../components/Chart Library/03-饼图/01-基础饼图/locaLoopChart.vue';
@@ -44,14 +45,15 @@ export default {
     onSubmit() {
       console.log('submit!', this.form);
     },
-    copyImportedFileContent() {
-      import(/* webpackChunkName: "yourComponent" */ '../../components/Chart Library/02-柱图/01-单柱图/BarChart.vue')
-        .then(() => {
-          const componentCode = `123 `;
+    copyImportedFileContent(val) {
+      axios
+        .get(`../../../data/饼图/文本/${val}.txt`)
+        .then((res) => {
+          const componentCode = res.data;
           navigator.clipboard
             .writeText(componentCode)
             .then(() => {
-              alert('文件内容已成功复制！请检索删除【这个要删除哦】字段哦！');
+              alert('组件内容已成功复制！');
             })
             .catch((err) => {
               console.error('复制文件内容失败：', err);

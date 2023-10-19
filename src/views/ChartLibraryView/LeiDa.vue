@@ -6,7 +6,11 @@
         <button class="button button--block" @click="copyImportedFileContent(1)">复制代码</button>
       </div>
       <div>
-        <YibiaopanTu :dataRatio="water" :style="{ width: '182px', height: '120px' }"></YibiaopanTu>
+        <RadarChart style="margin-top: 20px; margin-left: -20px" :width="'540px'" :hight="'418px'" :datacolor="teacherColor"></RadarChart>
+        <button class="button button--block" @click="copyImportedFileContent(1)">复制代码</button>
+      </div>
+      <div>
+        <YibiaopanTu :style="{ width: '182px', height: '120px' }"></YibiaopanTu>
         <button class="button button--block" @click="copyImportedFileContent(1)">复制代码</button>
       </div>
       <div class="fgx"></div>
@@ -15,12 +19,15 @@
 </template>
 <script>
 import LeiDaBar from '../../components/Chart Library/04-雷达图/01-基础雷达图/LeiDaBar.vue';
+import RadarChart from '../../components/Chart Library/04-雷达图/01-基础雷达图/RadarChart.vue';
 import YibiaopanTu from '../../components/Chart Library/05-仪表盘/半圆仪表盘/YibiaopanTu.vue';
 export default {
   name: 'App',
-  components: { LeiDaBar, YibiaopanTu },
+  components: { LeiDaBar, YibiaopanTu, RadarChart },
   data() {
-    return {};
+    return {
+      teacherColor: ['rgba(0, 255, 191, 0.2)', ' rgba(0, 255, 191, 0.2)'],
+    };
   },
   mounted() {},
   methods: {
