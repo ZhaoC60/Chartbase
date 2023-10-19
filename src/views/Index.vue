@@ -14,7 +14,7 @@
           <div class="button-container"><router-link class="button button--block" to="/echarts/zhexian">图表库</router-link></div>
           <div class="button-container"><router-link class="button button--block" to="/echarts/zhexian">图表库</router-link></div>
           <div class="button-container"><router-link class="button button--block" to="/echarts/zhexian">图表库</router-link></div>
-          <div class="button-container"><a class="button button--block" href="./data/other/赵晓会-15136960887.pdf" target="_blank">简历</a></div>
+          <div class="button-container"><a class="button button--block" href="./data/other/赵晓会-15136960887.pdf" target="_blank">我的简历</a></div>
         </div>
       </div>
     </div>
