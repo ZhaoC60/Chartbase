@@ -385,7 +385,7 @@ export default {
     align-items: center;
     position: absolute;
     background: url('../../../../assets/img/echartsImg/piechartbg.png') no-repeat;
-    background-position: 0px 27px;
+    background-position: 3px 47px;
     background-size: 35%;
     left: 4px;
     top: -45px;

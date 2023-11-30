@@ -1,8 +1,8 @@
 <!--
  * @Author: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
  * @Date: 2023-07-18 21:27:29
- * @LastEditors: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
- * @LastEditTime: 2023-07-18 23:22:09
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2023-11-28 20:23:00
  * @FilePath: \webpage\src\App.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -18,6 +18,26 @@
 
 <script>
 // import Nav from './components/Nav.vue';
+// 屏幕自适应
+(function (doc, win) {
+  setRem();
+  var resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+    recalc = function () {
+      setRem();
+    };
+  if (!doc.addEventListener) return;
+  win.addEventListener(resizeEvt, recalc, false);
+  // doc.addEventListener('DOMContentLoaded', recalc, false);
+})(document, window);
+
+function setRem() {
+  var docEl = document.documentElement;
+  var clientWidth = docEl.clientWidth;
+  if (!clientWidth) {
+    return;
+  }
+  docEl.style.fontSize = 20 * (clientWidth / 1920) + 'px';
+}
 export default {
   name: 'App',
   data() {

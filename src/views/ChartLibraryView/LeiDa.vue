@@ -9,10 +9,6 @@
         <RadarChart style="margin-top: 20px; margin-left: -20px" :width="'540px'" :hight="'418px'" :datacolor="teacherColor"></RadarChart>
         <button class="button button--block" @click="copyImportedFileContent(1)">复制代码</button>
       </div>
-      <div>
-        <YibiaopanTu :style="{ width: '182px', height: '120px' }"></YibiaopanTu>
-        <button class="button button--block" @click="copyImportedFileContent(1)">复制代码</button>
-      </div>
       <div class="fgx"></div>
     </div>
   </div>
@@ -20,10 +16,9 @@
 <script>
 import LeiDaBar from '../../components/Chart Library/04-雷达图/01-基础雷达图/LeiDaBar.vue';
 import RadarChart from '../../components/Chart Library/04-雷达图/01-基础雷达图/RadarChart.vue';
-import YibiaopanTu from '../../components/Chart Library/05-仪表盘/半圆仪表盘/YibiaopanTu.vue';
 export default {
   name: 'App',
-  components: { LeiDaBar, YibiaopanTu, RadarChart },
+  components: { LeiDaBar, RadarChart },
   data() {
     return {
       teacherColor: ['rgba(0, 255, 191, 0.2)', ' rgba(0, 255, 191, 0.2)'],
@@ -96,10 +91,10 @@ export default {
       transform: translate3d(-7px, -7px, 0);
       transition-property: box-shadow, transform;
       transition-duration: 0.3s;
-      color: #e7e7e7;
+      color: #fdf2f4;
       border-radius: 10px;
-      border: 4px solid #2489ce;
-      background-color: #409eff;
+      border: 4px solid #31aae3;
+      background-color: #69cbf2;
       box-shadow: 7px 7px 2px 0px #33333360;
     }
 

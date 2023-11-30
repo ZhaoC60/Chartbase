@@ -21,6 +21,9 @@
               <el-menu-item index="雷达图">
                 <router-link class="gorouter" to="/echarts/LeiDa">雷达图</router-link>
               </el-menu-item>
+              <el-menu-item index="其他组件">
+                <router-link class="gorouter" to="/echarts/Other">其他组件</router-link>
+              </el-menu-item>
             </el-menu>
           </el-col>
         </el-row>
@@ -57,6 +60,17 @@ export default {
 a {
   text-decoration: none;
   color: #e9e9e9;
+}
+@keyframes morph {
+  0% {
+    border-radius: 100px 40px 100px 40px;
+  }
+  50% {
+    border-radius: 40px 100px 40px 100px;
+  }
+  100% {
+    border-radius: 100px 40px 100px 40px;
+  }
 }
 .tubiao {
   width: 100%;
@@ -95,18 +109,21 @@ a {
     > .left {
       width: 15%;
       .gorouter {
-        height: 55px;
-        width: 250px;
+        width: 13rem;
         border-radius: 30px;
         margin-left: -20px;
         display: block;
+        text-align: center;
+        color: #69cbf2;
+        font-size: 1.6rem;
+        font-family: '腾祥智黑简';
       }
       .defaultCss {
         text-decoration: none;
         color: inherit;
       }
       .el-menu-vertical-demo:not(.el-menu--collapse) {
-        width: 300px;
+        width: 16rem;
         height: 100vh;
         padding-top: 50px;
         padding-left: 50px;
@@ -117,13 +134,15 @@ a {
       }
     }
     .right {
-      width: 76%;
+      width: 70rem;
       border-radius: 30px;
-      height: 83%;
+      height: 37.5rem;
       color: #fff;
       overflow: auto;
       overflow-x: hidden;
       background-color: #ffffff20 !important;
+      border: 0.3rem solid #31aae3;
+      // box-shadow: inset 2px 2px 5px 2px rgba(255, 255, 255, 0.1), inset -8px -9px 10px 0px rgba(0, 0, 0, 0.1), 7px 7px 20px 0px rgba(0, 0, 0, 0.1),4px 4px 5px 0px rgba(0, 0, 0, 0.1);
 
       // border: 10px dashed #053893;
       position: absolute;
@@ -135,28 +154,34 @@ a {
       border: none;
       background-color: #ffffff00;
     }
-    // /deep/ .el-submenu {
-    //   background-color: #eeaf0e;
-    //   border-radius: 30px;
-    //
-    // }
     /deep/ .el-menu-item {
       border-radius: 30px;
-      background-color: #eeaf0e00;
       margin-bottom: 30px;
-      color: #e9e9e9;
+      color: #69cbf2;
       font-size: 22px;
+      background-color: #fdf2f4;
+      box-shadow: 0 0.2rem 3.2rem hsla(236, 63%, 33%, 0.37);
+      border-radius: 1rem;
+      box-shadow: 0px 0px 0px 7px hsl(199, 76%, 54%), 0px 7px 0px 7px hsl(201, 80%, 40%), 0px 15px 15px 10px #0003;
+      cursor: pointer;
+      border-radius: 100px 40px 100px 40px;
+      margin-bottom: 2.3rem;
     }
     /deep/ .el-menu-item:hover {
       border-radius: 30px;
-      background-color: #ecf5ff30;
-      margin-bottom: 30px;
+      margin-bottom: 2.3rem;
+      transition: all 0.15s ease-in-out;
+      z-index: 2;
+      animation: 0.8s morph ease infinite;
     }
     /deep/ .el-menu-item.is-active {
       color: #eeaf0e;
-      background-color: #8e8eee !important;
+      background-color: #69cbf2 !important;
+      transition: all 0.15s ease-in-out;
+      color: #fdf2f4;
+      z-index: 2;
       > a {
-        color: #fcbc02;
+        color: #fdf2f4;
       }
     }
   }

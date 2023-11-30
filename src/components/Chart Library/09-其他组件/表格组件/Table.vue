@@ -38,16 +38,16 @@ export default {
     NavData: {
       type: Array,
       default: () => {
-        return ['编号', '时间', '详情', '办结情况'];
+        return ['编号', '时间', '事件详情', '办结情况'];
       },
     },
     TableStyle: {
       type: Object,
       default: () => {
         return {
-          TableWidth: '400px',
-          NavHeight: '30px',
-          NavlineHeight: '30px',
+          TableWidth: '500px',
+          NavHeight: '40px',
+          NavlineHeight: '40px',
           NavTop: '0px',
         };
       },
@@ -109,9 +109,9 @@ export default {
         direction: 'vertical',
         initialSlide: 0,
         loop: true,
-        slidesPerView: 5,
+        slidesPerView: 4,
         autoplay: {
-          delay: 1000,
+          delay: 2000,
           disableOnInteraction: false,
         },
       },
@@ -126,23 +126,24 @@ export default {
 
 <style lang="less" scoped>
 .table {
-  width: 408px;
+  width: 500px;
   .FJ_GZZDYJLB_Nav {
     margin-top: 10px;
-    width: 408px;
-    height: 30px;
+    width: 500px;
+    height: 50px;
     display: flex;
     justify-content: space-between;
     background: #104070;
     padding: 0 20px;
     box-sizing: border-box;
     li {
-      height: 30px;
-      line-height: 30px;
+      height: 50px;
+      line-height: 50px;
       font-size: 16px;
       color: #fff;
       text-align: center;
       font-family: '微软雅黑';
+      list-style: none;
       //   &:nth-child(1) {
       //     width: 71px;
       //   }
@@ -160,14 +161,14 @@ export default {
 
   .FJ_GZZDYJLB_Content {
     width: 408px;
-    height: 120px;
+    height: 200px;
 
     .wrap {
-      height: 120px;
+      height: 200px;
     }
     .swipe_inner {
-      height: 30px !important;
-      line-height: 30px;
+      height: 50px !important;
+      line-height: 50px;
       box-sizing: border-box;
       background: #104070;
       font-size: 16px;
@@ -192,9 +193,10 @@ export default {
       //   & > div:nth-child(3) {
       //     width: 257px;
       //   }
-      //   & > div:nth-child(4) {
-      //     width: 222px;
-      //   }
+      & > div:nth-child(4) {
+        //     width: 222px;
+        margin: 0 -30px 0 30px;
+      }
     }
   }
 }

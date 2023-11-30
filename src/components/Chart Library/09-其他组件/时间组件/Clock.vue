@@ -3,8 +3,8 @@
  * @version: 1.0.0
  * @Author: guozhiqing
  * @Date: 2021-06-21 15:21:13
- * @LastEditors: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
- * @LastEditTime: 2023-09-01 17:13:03
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2023-11-30 15:33:47
 -->
 <template>
   <div class="clock">
@@ -26,7 +26,7 @@ export default {
           fontSize: '48px',
           dayfontSize: '24px',
           weekfontSize: '18px',
-          widthlefttime: '140px',
+          widthlefttime: '210px',
           lineHeight: '12px',
         };
       },

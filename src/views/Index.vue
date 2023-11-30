@@ -13,7 +13,7 @@
           <div class="button-container"><router-link class="button button--block" to="/aboutMe">关于我</router-link></div>
           <div class="button-container"><router-link class="button button--block" to="/echarts/zhexian">图表库</router-link></div>
           <div class="button-container"><router-link class="button button--block" to="/echarts/zhexian">图表库</router-link></div>
-          <div class="button-container"><router-link class="button button--block" to="/echarts/zhexian">图表库</router-link></div>
+          <div class="button-container"><router-link class="button button--block" to="/work">工作经历</router-link></div>
           <div class="button-container"><a class="button button--block" href="./data/other/赵晓会-15136960887.pdf" target="_blank">我的简历</a></div>
         </div>
       </div>
@@ -132,7 +132,7 @@ export default {
           display: flex;
           justify-content: center;
           align-items: center;
-          font-size: 1.2rem;
+          font-size: 1rem;
           color: black;
           cursor: pointer;
         }
@@ -146,11 +146,9 @@ export default {
           transform: translate3d(-15px, -15px, 0);
           transition-property: box-shadow, transform;
           transition-duration: 0.3s;
-
-          border-radius: 10px;
-          border: 4px solid #2489ce;
+          border: 4px solid #31aae3;
           background-color: #b6daff;
-          box-shadow: 7px 7px 2px 0px #33333360;
+          box-shadow: 5px 5px 2px 0px #33333360;
         }
       }
     }

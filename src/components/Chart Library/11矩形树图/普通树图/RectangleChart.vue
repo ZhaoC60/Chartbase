@@ -1,10 +1,6 @@
 ﻿<template>
   <div class="barChart" v-if="rowData != null">
-    <div
-      ref="barChart"
-      :style="{ width: `${width}px`, height: `${height}px`,marginTop:'20px'}"
-      class="barEcharts"
-    ></div>
+    <div ref="barChart" :style="{ width: `${width}px`, height: `${height}px`, marginTop: '20px' }" class="barEcharts"></div>
   </div>
 </template>
 
@@ -18,11 +14,11 @@ export default {
     return {
       option: null,
       barChart: null,
-    }
+    };
   },
   props: {
     height: { type: String, default: '178' }, //高度
-    width: { type: String, default: '100%' }, //宽度
+    width: { type: String, default: '500px' }, //宽度
     rowData: {
       type: Array,
       default: () => {
@@ -51,35 +47,27 @@ export default {
             name: '医疗卫生业',
             value: 5,
           },
-        ]
+        ];
       },
     },
     rowColor: {
       type: Array,
       default: () => {
-        return [
-          '#00BFFF',
-          '#00DD8A',
-          '#00D9D9',
-          '#95FF2B',
-          '#7373FF',
-          '#2693FF',
-          '#00698C',
-        ]
+        return ['#00BFFF', '#00DD8A', '#00D9D9', '#95FF2B', '#7373FF', '#2693FF', '#00698C'];
       },
     },
   },
   mounted() {
     this.$nextTick(() => {
-      this.drawChart()
-    })
+      this.drawChart();
+    });
   },
   watch: {
     rowData: {
       handler() {
         this.$nextTick(() => {
-          this.drawChart()
-        })
+          this.drawChart();
+        });
       },
       immediate: true,
       deep: true,
@@ -87,8 +75,8 @@ export default {
   },
   methods: {
     drawChart() {
-      let that = this
-      this.barChart = this.$echarts.init(this.$refs.barChart)
+      // let that = this
+      this.barChart = this.$echarts.init(this.$refs.barChart);
       // data对象中添加color属性
       for (var i = 0; i < this.rowData.length; i++) {
         // this.rowData[i].name =this.rowData[i].Ksmc
@@ -97,7 +85,7 @@ export default {
         // delete(this.rowData[i].Tjsz)
         this.rowData[i].itemStyle = {
           color: this.rowColor[i],
-        }
+        };
       }
       this.option = {
         series: [
@@ -114,9 +102,9 @@ export default {
             label: {
               show: true,
               formatter: '{b}',
-              fontFamily: '微软雅黑',
+              fontFamily: '腾祥智黑简',
               fontSize: 16,
-              color:'#000000'
+              color: '#000000',
             },
             itemStyle: {
               borderColor: '#062E43',
@@ -126,7 +114,7 @@ export default {
             data: this.rowData,
           },
         ],
-      }
+      };
       // 清除点击事件
       // this.barChart.off('click')
       // this.barChart.on('click', function (params) {
@@ -134,10 +122,10 @@ export default {
       //   that.$store.commit('changeOfficesState', this.officesState)
       //   that.$store.commit('changeOffices', params.data.name)
       //   that.$store.commit('changeOfficesCode', params.data.code)
-  
+
       // })
-      this.barChart.setOption(this.option, true)
+      this.barChart.setOption(this.option, true);
     },
   },
-}
+};
 </script>

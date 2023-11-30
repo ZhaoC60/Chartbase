@@ -1,39 +1,35 @@
 ﻿<!--
  * @Author: hp
  * @Date: 2021-04-01 13:44:21
- * @LastEditTime: 2021-04-01 19:24:17
- * @LastEditors: your name
+ * @LastEditTime: 2023-11-30 15:01:38
+ * @LastEditors: Please set LastEditors
  * @Description: 仪表盘
  * @FilePath: /langchao_gongqingcheng/src/components/echarts/DashBoard.vue
 -->
 <template>
   <div class="cs-dashboard" :style="styleChart">
-    <div
-      class="chart"
-      :style="{ width: styleChart.width, height: styleChart.height }"
-      ref="chart"
-    ></div>
+    <div class="chart" :style="{ width: styleChart.width, height: styleChart.height }" ref="chart"></div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "csdashboard",
+  name: 'csdashboard',
   components: {},
   props: {
     styleChart: {
       type: Object,
       default: () => {
         return {
-          width: "190px",
-          height: "100px",
+          width: '190px',
+          height: '100px',
         };
       },
     },
     yibiaoColor: {
       type: Array,
       default: () => {
-        return ["#0DD09A", "#E9E26B", "#DA7070"];
+        return ['#0DD09A', '#E9E26B', '#DA7070'];
       },
     },
     // 数据百分比
@@ -48,15 +44,15 @@ export default {
     //轴原点大小
     circleSize: {
       type: String,
-      default: "5%",
+      default: '5%',
     },
     // 指针宽度，长度
     pointerStyle: {
       type: Object,
       default: () => {
         return {
-          length: "75%",
-          width: "1",
+          length: '75%',
+          width: '1',
         };
       },
     },
@@ -68,7 +64,7 @@ export default {
     // 天气状态
     weatherStatus: {
       type: String,
-      default: "",
+      default: '',
     },
   },
   data() {
@@ -86,12 +82,12 @@ export default {
         series: [
           // 背景仪表盘
           {
-            name: "bg",
-            type: "gauge",
-            radius: "100%",
+            name: 'bg',
+            type: 'gauge',
+            radius: '100%',
             min: 0,
             max: that.dataMax,
-            center: ["50%", "50%"],
+            center: ['50%', '50%'],
 
             splitNumber: 0, //刻度数量
             // startAngle: 180,
@@ -101,8 +97,8 @@ export default {
               lineStyle: {
                 width: this.loopWidth,
                 color: [
-                  [0, "#345262"],
-                  [1, "#345262"],
+                  [0, '#345262'],
+                  [1, '#345262'],
                 ],
               },
             },
@@ -122,14 +118,14 @@ export default {
 
             itemStyle: {
               // 仪表盘指针样式
-              color: "#fff",
+              color: '#fff',
             },
             //仪表盘详情，用于显示数据。
             detail: {
               show: false,
               offsetCenter: [0, 0],
-              color: "#ddd",
-              formatter: function(params) {
+              color: '#ddd',
+              formatter: function (params) {
                 return params;
               },
               textStyle: {
@@ -149,15 +145,15 @@ export default {
               show: true,
               text: `暂无数据`,
               offsetCenter: [0, 30],
-              color: "#4CD48C",
+              color: '#4CD48C',
               fontSize: 22,
-              fontFamily: "微软雅黑",
+              fontFamily: '微软雅黑',
             },
-            type: "gauge",
-            radius: "100%",
+            type: 'gauge',
+            radius: '100%',
             min: 0,
             max: that.dataMax,
-            center: ["50%", "50%"],
+            center: ['50%', '50%'],
 
             splitNumber: 0, //刻度数量
             // startAngle: 180,
@@ -200,7 +196,7 @@ export default {
 
             itemStyle: {
               // 仪表盘指针样式
-              color: "#fff",
+              color: '#fff',
             },
             pointer: {
               show: true,
@@ -211,13 +207,13 @@ export default {
             detail: {
               show: false,
               offsetCenter: [0, 30],
-              color: "#4CD48C",
-              formatter: function(params) {
+              color: '#4CD48C',
+              formatter: function (params) {
                 return params;
               },
               textStyle: {
                 fontSize: 22,
-                fontFamily: "微软雅黑",
+                fontFamily: '微软雅黑',
               },
             },
             data: [
@@ -229,20 +225,20 @@ export default {
           },
           // 小圆点
           {
-            name: "小圆形",
-            type: "pie",
+            name: '小圆形',
+            type: 'pie',
             hoverAnimation: false,
             legendHoverLink: false,
             tooltip: {
               show: false,
             },
-            center: ["50%", "50%"],
+            center: ['50%', '50%'],
             radius: [this.circleSize], // 小圆点半径
             z: 20,
             label: {
               normal: {
                 show: false,
-                position: "center",
+                position: 'center',
               },
               emphasis: {
                 show: false,
@@ -257,19 +253,19 @@ export default {
             data: [
               {
                 value: 0,
-                name: "1",
+                name: '1',
                 itemStyle: {
                   normal: {
-                    color: "red",
+                    color: 'red',
                   },
                 },
               },
               {
                 value: 100,
-                name: "2",
+                name: '2',
                 itemStyle: {
                   normal: {
-                    color: "#fff",
+                    color: '#fff',
                   },
                 },
               },
@@ -281,7 +277,7 @@ export default {
     },
     // 计算数据比例
     setRation() {
-      const that = this;
+      // const that = this;
     },
   },
   watch: {

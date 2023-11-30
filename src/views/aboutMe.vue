@@ -1,95 +1,26 @@
 <template>
   <div class="about">
     <div class="title">
-      <img src="../assets/img/title.png" alt="" />
-      <p>本人成分简介</p>
+      <img src="../assets/img/about.png" alt="" />
     </div>
 
     <div class="content">
       <div id="wall">
-        <ul>
-          <li>
-            <div>
-              <h2>自我简介</h2>
-              <div class="biaoti">
-                <p class="title">昵称：</p>
-                <p class="name">赵得柱</p>
-              </div>
-              <div class="biaoti">
-                <p class="title">生辰：</p>
-                <p class="name">1998.10.30</p>
-              </div>
-              <div class="biaoti">
-                <p class="title">工作<br />经历：</p>
-                <p class="name">在前公司担任前端工程师职位，工作两年，从事可视化信息开发方向。</p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <!-- <div>
-              <h2>个人技能</h2>
-              <vue-seamless-scroll :data="listData" :class-option="optionSetting" class="seamless-warp">
-                <ul class="item">
-                  <li v-for="item in listData" :key="item">{{ item.title }}</li>
-                </ul>
-              </vue-seamless-scroll>
-            </div> -->
-            <div>
-              <h2>我的成分</h2>
-              <div class="biaoti">
-                <p class="title">成分：</p>
-                <p class="name">99%帅气+1%艺术气质</p>
-              </div>
-              <div class="biaoti">
-                <p class="title">优点：</p>
-                <p class="name">性格好易于相处，工作上进富有责任心，有很强的学习能力，对前端开发非常热爱能积极学习新技术并运用。</p>
-              </div>
-              <div class="biaoti">
-                <p class="title">爱好：</p>
-                <p class="name">画画、听歌、玩游戏</p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div>
-              <h2>其他规格</h2>
-              <div class="biaoti">
-                <p class="title">MBTI：</p>
-                <p class="name">intj建筑师人格</p>
-              </div>
-              <div class="biaoti">
-                <p class="title">星座：</p>
-                <p class="name">天蝎座</p>
-              </div>
-              <div class="biaoti">
-                <p class="title">MBTI：</p>
-                <p class="name">intj建筑师人格</p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div>
-              <h2>电影推荐</h2>
-              <div class="biaoti">
-                <p class="name">
-                  &nbsp;&nbsp;&nbsp;&nbsp;电锯惊魂系列、招魂系列、死寂、不安的种子、鬼影实录、山村老尸、继续活下去的5个故事、撕裂人、失眠、非自然死亡、海妖的呼唤：火之岛生存战等。
-                </p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div>
-              <h2>周日：</h2>
-              <p>下班前记得把桌面的文档整理好，项目文件记得要备份。</p>
-            </div>
-          </li>
-          <li>
-            <div>
-              <h2>备注：</h2>
-              <p>下班前记得把桌面的文档整理好，项目文件记得要备份。还有很多BUG要改！悲催的程序员</p>
-            </div>
-          </li>
-        </ul>
+        <div class="swiper">
+          <el-carousel ref="carousel" arrow="always" :interval="3000" height="32.5rem">
+            <el-carousel-item v-for="item in 2" :key="item">
+              <ul v-for="(i, ind) in 8" :key="ind" :class="{ evenLi: (ind + 1) % 2 == 0 }">
+                <li>
+                  <div>
+                    <img :src="require(`../assets/img/pic${ind + 1}.jpg`)" alt="" />
+                  </div>
+                </li>
+              </ul>
+            </el-carousel-item>
+          </el-carousel>
+          <div @click="prev" class="prev"><img src="../assets/img/prev.png" alt="" /></div>
+          <div @click="next" class="next"><img src="../assets//img/next.png" alt="" /></div>
+        </div>
       </div>
     </div>
   </div>
@@ -163,18 +94,25 @@ export default {
   },
   components: {},
   computed: {
-    optionSetting() {
-      return {
-        step: 0.2, // 数值越⼤速度滚动越快
-        limitMoveNum: 8, // 开始⽆缝滚动的数据量 this.dataList.length
-        hoverStop: true, // 是否开启⿏标悬停stop
-        direction: 1, // 0向下 1向上 2向左 3向右
-        openWatch: true, // 开启数据实时监控刷新dom
-        waitTime: 10000, // 单步运动停⽌的时间(默认值1000ms)
-      };
+    // optionSetting() {
+    //   return {
+    //     step: 0.2, // 数值越⼤速度滚动越快
+    //     limitMoveNum: 8, // 开始⽆缝滚动的数据量 this.dataList.length
+    //     hoverStop: true, // 是否开启⿏标悬停stop
+    //     direction: 1, // 0向下 1向上 2向左 3向右
+    //     openWatch: true, // 开启数据实时监控刷新dom
+    //     waitTime: 10000, // 单步运动停⽌的时间(默认值1000ms)
+    //   };
+    // },
+  },
+  methods: {
+    prev() {
+      this.$refs.carousel.prev();
+    },
+    next() {
+      this.$refs.carousel.next();
     },
   },
-  methods: {},
 };
 </script>
 
@@ -182,9 +120,13 @@ export default {
 .about {
   width: 100%;
   // background-color: #1ed3a3;
+  background-color: #252525;
   background-image: linear-gradient(to bottom, #023a90, #609ec5);
-  padding-top: 70px;
+  padding-top: 3.5rem;
   // height: 820px;
+  // background: url('../assets/img/bg.png');
+  background-size: contain;
+
   .title {
     > img {
       width: 45%;
@@ -201,33 +143,22 @@ export default {
       color: #ffffc3;
       position: absolute;
       left: 50%;
-      top: 50%;
+      top: 2%;
       transform: translate(-50%, -50%);
     }
   }
   .content {
-    width: 85%;
-    height: 70vh;
+    width: 80rem;
+    height: 34rem;
     margin: 0 auto;
-    margin-top: 162px;
+    margin-top: 6.8rem;
     font-family: '腾祥智黑简';
     /* wall */
     #wall {
-      width: 82%;
+      width: 70rem;
       height: auto;
       margin: 40px auto;
-      .seamless-warp {
-        height: 90%;
-        overflow: hidden;
-        .item {
-          width: 100%;
-          > li {
-            width: 350px;
-            margin: 0 0 10px 0;
-            text-align: left;
-          }
-        }
-      }
+
       .biaoti {
         display: flex;
         .title {
@@ -247,63 +178,92 @@ export default {
         }
       }
       ul {
-        // overflow: hidden;
         background-color: #fff;
-        // padding: 1em 2em 3em 5em;
-
         li {
-          width: 30%;
-          margin: 2.2em 0;
+          width: 15rem;
+          height: 12.5rem;
+          margin: 2.2em 0 -0.7rem 1rem;
           // display: flex;
           // flex-wrap: wrap;
-          margin-right: 4%;
           list-style: none;
           float: left;
           > div {
             width: 100%;
             height: 230px;
-            background: #cefcc5;
-            color: #000;
-            padding: 1em; /* 阴影处理 */
-            box-shadow: 5px 5px 7px rgba(33, 33, 33, 0.9);
+            background: #e876a7;
+            color: #fef2f4;
+            // padding: 1em; /* 阴影处理 */
+            box-shadow: 5px 5px 7px rgba(33, 33, 33, 0.5);
             -webkit-transform: rotate(-5deg);
             box-sizing: border-box;
-            border: 10px solid #7bd87b;
+            border: 10px solid #dd3688;
             position: relative;
+            overflow: hidden;
+            img {
+              width: 100%;
+              height: auto;
+            }
           }
-          h2 {
-            font-size: 18px;
-            font-weight: bold;
-            padding: 5px;
+
+          //  &:nth-child(2n) > div {
+          //    -webkit-transform: rotate(5deg);
+          //    top: -10px;
+          //    background: #fef2f4 !important;
+          //  }
+        }
+      }
+      .evenLi li div {
+        -webkit-transform: rotate(5deg);
+        top: -10px;
+        background: #fef2f4 !important;
+      }
+      .swiper {
+        height: 30rem;
+        width: 70rem;
+        box-sizing: border-box;
+        padding-left: 3rem;
+        /deep/ .el-carousel__indicators {
+          .el-carousel__button {
+            width: 1rem;
+            height: 1rem;
+            margin: 0 0.2rem;
+            border-radius: 50%;
           }
-          p {
-            line-height: 30px;
-            font-size: 14px;
-            text-align: left;
+          .el-carousel__indicator.is-active button {
+            background-color: #dd3688;
+            opacity: 1;
           }
-          // &:nth-child(even) > div {
-          //   -webkit-transform: rotate(5deg);
-          //   top: 10px;
-          //   background: #e3e5f7;
-          // }
-          &:nth-child(2n) > div {
-            -webkit-transform: rotate(5deg);
-            top: -10px;
-            background: #ffffc3;
+          .el-carousel__indicator button {
+            background-color: #f993b8;
+            opacity: 1;
           }
         }
-        li:nth-child(3n) {
-          margin-right: 0;
+        /deep/ .el-carousel__arrow {
+          display: none;
+        }
+        .prev {
+          position: absolute;
+          left: 5rem;
+          top: 22rem;
+        }
+        .next {
+          position: absolute;
+          right: 5rem;
+          top: 22rem;
+        }
+        .prev,
+        .next {
+          cursor: pointer;
+          img {
+            width: 8rem;
+          }
         }
       }
     }
-    // #wall ul li:nth-child(5n) > div {
-    //   -webkit-transform: rotate(5deg);
-    //   background: #c6fdd6;
-    // }
+
     #wall ul li > div:hover {
-      box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.7);
-      -webkit-transform: scale(1.25);
+      box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+      -webkit-transform: scale(1.1);
       z-index: 111;
       -webkit-transition: -webkit-transform 0.2s linear;
     }
