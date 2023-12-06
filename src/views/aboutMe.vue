@@ -3,16 +3,32 @@
     <div class="title">
       <img src="../assets/img/about.png" alt="" />
     </div>
+    <div class="menu">
+      <div>
+        <div class="btn"><router-link class="button button--block" to="/">首页</router-link></div>
+        <div class="btn"><router-link class="button button--block" to="/echarts/zhexian">图表库</router-link></div>
+      </div>
+      <div>
+        <div class="btn"><router-link class="button button--block" to="/work">工作经历</router-link></div>
+        <div class="btn"><a href="https://blog.csdn.net/m0_46415203?type=blog">CSDN</a></div>
+      </div>
+    </div>
 
     <div class="content">
       <div id="wall">
         <div class="swiper">
           <el-carousel ref="carousel" arrow="always" :interval="3000" height="32.5rem">
-            <el-carousel-item v-for="item in 2" :key="item">
+            <el-carousel-item v-for="(item, index) in 2" :key="item">
               <ul v-for="(i, ind) in 8" :key="ind" :class="{ evenLi: (ind + 1) % 2 == 0 }">
                 <li>
                   <div>
-                    <img :src="require(`../assets/img/pic${ind + 1}.jpg`)" alt="" />
+                    <el-image
+                      :fit="cover"
+                      style="width: 100%; height: auto"
+                      :src="require(`../assets/img/pic${index + 1}-${ind + 1}.jpg`)"
+                      :preview-src-list="[require(`../assets/img/pic${index + 1}-${ind + 1}.jpg`)]"
+                    >
+                    </el-image>
                   </div>
                 </li>
               </ul>
@@ -32,64 +48,6 @@ export default {
   data() {
     return {
       activeName: '1',
-      tags: [
-        { name: '标签一', type: '' },
-        { name: '标签二', type: 'success' },
-        { name: '标签三', type: 'info' },
-        { name: '标签四', type: 'warning' },
-        { name: '标签五', type: 'danger' },
-      ],
-      listData: [
-        {
-          title: '1.精通 HTML、CSS、JavaScript 技能，熟悉页面结构和布局，能够按需实现页面效果；',
-        },
-        {
-          title: '2. 熟练掌插 HTML5 技术开发、ES6 语法，响应式布局和弹性盒子布局以及 DIV+CSS 布局；',
-        },
-        {
-          title: '3. 熟练使用 jQuery 库，Bootstrap 的等框架；',
-        },
-        {
-          title: '4. 熟练使用 vue 全家桶，并熟练运用 Vant、ElementUI 等组件库；',
-        },
-        {
-          title: '5. 熟练使用 ECharts 的大数据可视化开发； ',
-        },
-        {
-          title: '6. 熟练使用css的预处理语言less；',
-        },
-        {
-          title: '7. 熟知微信小程序和 uni-app 开发 ，可以进行基本使用和简单的开发；',
-        },
-        {
-          title: '8. 了解 Node.js、包依赖工具 npm 和以及项目打包工具 webpack 的使用；',
-        },
-        {
-          title: '9. 了解 java 后端语言和 MySQL 数据库。',
-        },
-      ],
-      skillsData: [
-        {
-          name: 'HTML+CSS',
-          val: 92,
-        },
-        {
-          name: 'JavaScript',
-          val: 90,
-        },
-        {
-          name: 'VUE',
-          val: 90,
-        },
-        {
-          name: 'draw',
-          val: 96,
-        },
-        {
-          name: 'play game',
-          val: 100,
-        },
-      ],
     };
   },
   components: {},
@@ -117,6 +75,47 @@ export default {
 </script>
 
 <style lang="less" scoped>
+@keyframes morph {
+  0% {
+    border-radius: 100px 40px 100px 40px;
+  }
+  50% {
+    border-radius: 40px 100px 40px 100px;
+  }
+  100% {
+    border-radius: 100px 40px 100px 40px;
+  }
+}
+
+@keyframes floatEven {
+  0% {
+    -webkit-transform: translateY(0.7rem);
+    transform: translateY(0.7rem);
+  }
+  50% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(0.7rem);
+    transform: translateY(0.7rem);
+  }
+}
+@keyframes float {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  50% {
+    -webkit-transform: translateY(0.7rem);
+    transform: translateY(0.7rem);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
 .about {
   width: 100%;
   // background-color: #1ed3a3;
@@ -126,7 +125,52 @@ export default {
   // height: 820px;
   // background: url('../assets/img/bg.png');
   background-size: contain;
-
+  .menu {
+    position: absolute;
+    top: 4.5rem;
+    width: 100%;
+    height: 15rem;
+    display: flex;
+    box-sizing: border-box;
+    padding: 0 7rem;
+    justify-content: space-between;
+    > div {
+      width: 20rem;
+      height: 10rem;
+      display: flex;
+      justify-content: space-around;
+      > div:nth-child(2n) {
+        animation: floatEven ease-in-out 2s infinite;
+      }
+      > div:nth-child(2n-1) {
+        animation: float ease-in-out 2s infinite;
+      }
+      .btn {
+        width: 6rem;
+        color: #de3587;
+        height: 3rem;
+        line-height: 3rem;
+        font-family: '腾祥智黑简';
+        font-size: 1.5rem;
+        font-weight: 900;
+        background-color: pink;
+        text-shadow: 0px 1px 1px #000000;
+        box-shadow: 0px 0px 0px 0.5rem hsl(331, 72%, 54%), 0px 0.5rem 0px 0.5rem hsl(330, 80%, 40%), 0px 20px 20px 0.5rem #0003;
+        cursor: pointer;
+        border-radius: 1.2rem;
+        a {
+          color: inherit;
+          text-decoration: none;
+        }
+        &:hover {
+          transform: translateY(0rem);
+          transition: all 0.15s ease-in-out;
+          z-index: 2;
+          animation: 1.5s morph ease infinite;
+        }
+      }
+    }
+  }
   .title {
     > img {
       width: 45%;
@@ -216,6 +260,9 @@ export default {
         -webkit-transform: rotate(5deg);
         top: -10px;
         background: #fef2f4 !important;
+        > .el-image {
+          -webkit-transform: rotate(0deg);
+        }
       }
       .swiper {
         height: 30rem;

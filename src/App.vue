@@ -2,7 +2,7 @@
  * @Author: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
  * @Date: 2023-07-18 21:27:29
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2023-11-28 20:23:00
+ * @LastEditTime: 2023-12-02 18:01:00
  * @FilePath: \webpage\src\App.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -44,14 +44,24 @@ export default {
     return {
       navData: [],
       menu: [],
+      scale: 1,
       notFound: '',
     };
   },
   components: {
     // Nav,
   },
-  computed: {},
-  methods: {},
+
+  methods: {
+    setScreen() {
+      let visibleWidth = window.innerWidth;
+      let visibleHeight = window.innerHeight;
+      var widthPercentage = (1.0 * visibleWidth) / 3840;
+      var heightPercentage = (1.0 * visibleHeight) / 2160;
+      this.scale = Math.min(widthPercentage, heightPercentage);
+      this.$store.commit('setScale', this.scale);
+    },
+  },
   mounted() {},
   created() {
     this.$store.commit('setRouter', this.$router.currentRoute.path);

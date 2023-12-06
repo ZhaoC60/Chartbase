@@ -9,12 +9,17 @@
     </div>
     <div class="center">
       <div class="shop">
+        <div class="house">
+          <div><img src="../assets/img/house1.png" alt="" /></div>
+        </div>
         <div class="itemBtn">
-          <div class="button-container"><router-link class="button button--block" to="/aboutMe">关于我</router-link></div>
           <div class="button-container"><router-link class="button button--block" to="/echarts/zhexian">图表库</router-link></div>
-          <div class="button-container"><router-link class="button button--block" to="/echarts/zhexian">图表库</router-link></div>
+
           <div class="button-container"><router-link class="button button--block" to="/work">工作经历</router-link></div>
           <div class="button-container"><a class="button button--block" href="./data/other/赵晓会-15136960887.pdf" target="_blank">我的简历</a></div>
+          <div class="button-container"><a class="button button--block" href="https://blog.csdn.net/m0_46415203?type=blog">CSDN</a></div>
+          <!-- <div class="button-container"><router-link class="button button--block" to="/aboutMe">自恋画展</router-link></div> -->
+          <div><div class="button button--block" style="opacity: 0"></div></div>
         </div>
       </div>
     </div>
@@ -71,7 +76,7 @@ export default {
     height: 35px;
     .seamless-warp2 {
       overflow: hidden;
-      height: 40px;
+      height: 2rem;
       padding-top: 10px;
       width: 100%;
       margin: -20px auto;
@@ -109,20 +114,30 @@ export default {
     bottom: 150px;
     overflow: hidden;
     .shop {
-      position: relative;
-      width: 1600px;
-      height: 100%;
-      transform: scale(1.1);
-      margin: 0 auto;
-      background: url('../assets/img/house.png') no-repeat;
-      background-position: center -320px;
+      .house {
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        text-align: center;
+        div {
+          position: absolute;
+          left: 50%;
+          bottom: -0.5rem;
+          transform: translate(-50%, 0);
+          width: 70rem;
+          > img {
+            width: 70rem;
+            margin: 0 auto;
+          }
+        }
+      }
       .itemBtn {
         display: flex;
-        width: 575px;
+        width: 33rem;
         justify-content: space-between;
-        position: absolute;
-        top: 165px;
-        left: 570px;
+        position: fixed;
+        top: 41%;
+        left: 35rem;
         .button-container {
           display: flex;
           align-items: center;
@@ -138,8 +153,8 @@ export default {
         }
 
         .button--block {
-          width: 80px;
-          height: 45px;
+          width: 4rem;
+          height: 2.6rem;
           margin-top: 10px;
           font-family: '腾祥智黑简';
           text-decoration: none;

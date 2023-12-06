@@ -3,11 +3,11 @@
     <div class="picBox">
       <div>
         <Table></Table>
-        <button class="button button--block" style="margin: 30px 0 0 200px" @click="copyImportedFileContent(1)">复制代码</button>
+        <button class="button button--block" style="margin: 30px 0 0 200px" @click="copyImportedFileContent('Table')">复制代码</button>
       </div>
       <div>
         <VideoCommon></VideoCommon>
-        <button class="button button--block" @click="copyImportedFileContent(1)">复制代码</button>
+        <button class="button button--block" @click="copyImportedFileContent('VideoCommon')">复制代码</button>
       </div>
       <!-- <div class="fgx"></div> -->
       <!-- <div>
@@ -31,6 +31,7 @@ import Table from '../../components/Chart Library/09-其他组件/表格组件/T
 import VideoCommon from '../../components/Chart Library/09-其他组件/视频组件/VideoCommon';
 import treeChart from '../../components/Chart Library/11矩形树图/背景树图/treeChart.vue';
 import RectangleChart from '../../components/Chart Library/11矩形树图/普通树图/RectangleChart';
+import axios from 'axios';
 export default {
   name: 'App',
   components: { Table, VideoCommon, treeChart, RectangleChart },
@@ -42,18 +43,19 @@ export default {
     onSubmit() {
       console.log('submit!', this.form);
     },
-    copyImportedFileContent() {
-      import(/* webpackChunkName: "yourComponent" */ '../../components/Chart Library/02-柱图/01-单柱图/BarChart.vue')
-        .then(() => {
-          const componentCode = `123 `;
-          navigator.clipboard
-            .writeText(componentCode)
-            .then(() => {
-              alert('文件内容已成功复制！请检索删除【这个要删除哦】字段哦！');
-            })
-            .catch((err) => {
-              console.error('复制文件内容失败：', err);
-            });
+    copyImportedFileContent(val) {
+      axios
+        .get(`./data/other/文本/${val}.txt`)
+        .then((res) => {
+          // 获取要复制的内容
+          var textArea = document.createElement('textarea');
+          textArea.value = res.data;
+          document.body.appendChild(textArea);
+          textArea.select();
+          document.execCommand('copy');
+          document.body.removeChild(textArea);
+          // 提示复制成功
+          alert('内容已复制到剪贴板');
         })
         .catch((err) => {
           console.error('加载文件失败：', err);

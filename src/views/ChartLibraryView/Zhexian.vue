@@ -2,7 +2,7 @@
  * @Author: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
  * @Date: 2023-07-18 21:27:29
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2023-11-29 23:03:15
+ * @LastEditTime: 2023-12-01 17:15:29
  * @FilePath: \webpage\src\views\ChartLibraryView\Zhexian.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -72,17 +72,17 @@ export default {
           break;
       }
       axios
-        .get(`../../../data/折线图/文本/${jsonName}.txt`)
-        .then((res) => {
-          const componentCode = res.data;
-          navigator.clipboard
-            .writeText(componentCode)
-            .then(() => {
-              alert('组件内容已成功复制！');
-            })
-            .catch((err) => {
-              console.error('复制文件内容失败：', err);
-            });
+        .get(`./data/折线图/文本/${jsonName}.txt`)
+          .then((res) => {
+          // 获取要复制的内容
+          var textArea = document.createElement('textarea');
+          textArea.value = res.data;
+          document.body.appendChild(textArea);
+          textArea.select();
+          document.execCommand('copy');
+          document.body.removeChild(textArea);
+          // 提示复制成功
+          alert('内容已复制到剪贴板');
         })
         .catch((err) => {
           console.error('加载文件失败：', err);

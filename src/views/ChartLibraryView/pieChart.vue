@@ -47,17 +47,17 @@ export default {
     },
     copyImportedFileContent(val) {
       axios
-        .get(`../../../data/饼图/文本/${val}.txt`)
+        .get(`./data/饼图/文本/${val}.txt`)
         .then((res) => {
-          const componentCode = res.data;
-          navigator.clipboard
-            .writeText(componentCode)
-            .then(() => {
-              alert('组件内容已成功复制！');
-            })
-            .catch((err) => {
-              console.error('复制文件内容失败：', err);
-            });
+          // 获取要复制的内容
+          var textArea = document.createElement('textarea');
+          textArea.value = res.data;
+          document.body.appendChild(textArea);
+          textArea.select();
+          document.execCommand('copy');
+          document.body.removeChild(textArea);
+          // 提示复制成功
+          alert('内容已复制到剪贴板');
         })
         .catch((err) => {
           console.error('加载文件失败：', err);
